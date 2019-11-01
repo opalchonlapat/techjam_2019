@@ -31,7 +31,7 @@ def read_given_files() -> list:
                         dtype={'id':str})
     return demographic_df, credit_df, kplus_df, train_df
 
-def kbtg_metric(y_true, y_pred):
+def modified_smape(y_true, y_pred):
     return (100 - 100/len(y_pred) * 
             np.sum(np.abs(y_pred - y_true) ** 2 /
                 (np.min(np.abs(np.concatenate([y_pred.reshape(-1,1), 2 * y_true.reshape(-1,1)],1)),1) + np.abs(y_true)) ** 2))
