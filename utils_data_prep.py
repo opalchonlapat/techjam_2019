@@ -35,3 +35,10 @@ def modified_smape(y_true, y_pred):
     return (100 - 100/len(y_pred) * 
             np.sum(np.abs(y_pred - y_true) ** 2 /
                 (np.min(np.abs(np.concatenate([y_pred.reshape(-1,1), 2 * y_true.reshape(-1,1)],1)),1) + np.abs(y_true)) ** 2))
+
+def remove_outlier(col: np.array):
+    q1 = np.percentile(col, 25)
+    q3 = np.percentile(col, 75)
+    iqr = q3-q1
+    col = col[(col < q3+1.5*iqr)&(col > q1-1.5*iqr)]
+    return col
