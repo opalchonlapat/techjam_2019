@@ -43,5 +43,5 @@ def remove_outlier(col: np.array):
     col = col[(col < q3+1.5*iqr)&(col > q1-1.5*iqr)]
     return col
 
-def main():
-    print("There are nothing in this function.")
+def nothing():
+    pass
