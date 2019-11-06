@@ -44,4 +44,4 @@ def remove_outlier(col: np.array):
     return col
 
 def main():
-    pass
+    print("There are nothing in this function.")
